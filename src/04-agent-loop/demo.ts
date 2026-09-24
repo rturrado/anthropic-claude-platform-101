@@ -24,7 +24,11 @@ console.log('Socratic tutor ready. Type "exit" (or empty line) to quit.\n');
 
 while (true) {
   const input = (await rl.question('you > ')).trim();
-  if (input === '' || input.toLowerCase() === 'exit' || input.toLowerCase() === 'quit') {
+  if (
+    input === '' ||
+    input.toLowerCase() === 'exit' ||
+    input.toLowerCase() === 'quit'
+  ) {
     break;
   }
 

@@ -2,6 +2,7 @@
   "name": "claude-platform-101",
   "version": "0.0.1",
   "description": "Parallel exercises following the Claude Platform 101 course.",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {

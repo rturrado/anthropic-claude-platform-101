@@ -16,7 +16,8 @@ const prompt = [
   'When the bird meets the train, it turns around and flies back to B.',
   'Upon reaching B, it turns around again and flies toward the train,',
   'and so on, until the train arrives at B.',
-  'If A and B are 120 km apart, how many kilometers will the bird have flown in total?',
+  'If A and B are 120 km apart,',
+  'how many kilometers will the bird have flown in total?',
   'Reason step by step before giving your final answer.',
 ].join(' ');
 

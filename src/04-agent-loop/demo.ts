@@ -16,6 +16,8 @@ const systemPrompt = [
   'ending in a question when possible.',
 ].join(' ');
 
+// The agent loop lives entirely in this process: this array holds the whole
+// conversation state.
 type Message = { role: 'user' | 'assistant'; content: string };
 const messages: Message[] = [];
 
@@ -38,6 +40,8 @@ while (true) {
 
   messages.push({ role: 'user', content: input });
 
+  // The Claude API is stateless: every call re-sends the full history, so input
+  // tokens grow each turn.
   const response = await client.messages.create({
     model: 'claude-haiku-4-5',
     max_tokens: 256,

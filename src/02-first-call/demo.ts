@@ -2,6 +2,8 @@ import { makeClient } from '../lib/client.ts';
 
 const client = makeClient();
 
+// A minimal call: model, max_tokens, and messages.
+// messages is a list of {role, content} pairs, even for a single turn.
 const response = await client.messages.create({
   model: 'claude-haiku-4-5',
   max_tokens: 256,

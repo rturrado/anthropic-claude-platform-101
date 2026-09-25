@@ -2,6 +2,8 @@ import { makeClient } from '../lib/client.ts';
 
 const client = makeClient();
 
+// Same prompt sent to three models to compare the speed/cost/depth trade-off.
+// The model ID is chosen per call - the same client can hit any of them.
 const models = [
   'claude-haiku-4-5',
   'claude-sonnet-4-6',

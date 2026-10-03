@@ -87,7 +87,7 @@ const messages: Anthropic.Messages.MessageParam[] = [
 ];
 
 // The agent loop: iterate until Claude's stop_reason says end_turn.
-// Every iteration re-sends the full history of messages  because the API is
+// Every iteration re-sends the full history of messages because the API is
 // stateless.
 let turn = 0;
 while (true) {
@@ -122,7 +122,7 @@ while (true) {
 
   if (response.stop_reason === 'tool_use') {
     // Append the assistant's turn verbatim.
-    // tool_use blocks must stay in the history so the tool_use_id references
+    // tool_use blocks must stay in the history, so the tool_use_id references
     // in the next user turn resolve.
     messages.push({ role: 'assistant', content: response.content });
 

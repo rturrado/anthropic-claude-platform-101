@@ -5,7 +5,7 @@ import { makeClient } from '../lib/client.ts';
 
 const client = makeClient();
 
-// The system prompt is an array of blocks so a `cache_control` marker can be
+// The system prompt is an array of blocks, so a `cache_control` marker can be
 // attached to the block holding the Go spec.
 // Anthropic caches the marked prefix; subsequent calls that reuse the same
 // prefix are billed at 10% of input tokens for it instead of 100%.

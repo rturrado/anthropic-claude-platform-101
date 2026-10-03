@@ -10,8 +10,10 @@ const GITHUB_MCP_URL = 'https://api.githubcopilot.com/mcp/';
 const token = process.env.GITHUB_MCP_TOKEN;
 if (!token) {
   throw new Error(
-    'GITHUB_MCP_TOKEN is not set. See .env.local.example and run ' +
+    [
+      'GITHUB_MCP_TOKEN is not set. See .env.local.example and run',
       '`echo "GITHUB_MCP_TOKEN=$(gh auth token)" >> .env.local`.',
+    ].join(' '),
   );
 }
 

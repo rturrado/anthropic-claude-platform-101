@@ -71,9 +71,9 @@ const listTodosTool = betaTool({
 const markDoneTool = betaTool({
   name: 'mark_done',
   description: [
-    'Mark the todo with the given id as done. ',
+    'Mark the todo with the given id as done.',
     'Returns an error if the id does not exist.',
-  ].join(''),
+  ].join(' '),
   inputSchema: {
     type: 'object',
     properties: {
@@ -102,10 +102,11 @@ const runner = client.beta.messages.toolRunner({
   messages: [
     {
       role: 'user',
-      content:
-        "Add 'buy milk' and 'call mom' to my todo list, " +
-        "then mark 'call mom' as done, " +
+      content: [
+        "Add 'buy milk' and 'call mom' to my todo list,",
+        "then mark 'call mom' as done,",
         "and tell me what's still pending.",
+      ].join(' '),
     },
   ],
 });

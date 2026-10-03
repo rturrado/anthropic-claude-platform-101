@@ -36,9 +36,9 @@ const tools: Anthropic.Messages.Tool[] = [
   {
     name: 'mark_done',
     description: [
-      'Mark the todo with the given id as done. ',
+      'Mark the todo with the given id as done.',
       'Returns an error if the id does not exist.',
-    ].join(''),
+    ].join(' '),
     input_schema: {
       type: 'object',
       properties: {
@@ -78,10 +78,11 @@ function runTool(name: string, input: Record<string, unknown>): string {
 const messages: Anthropic.Messages.MessageParam[] = [
   {
     role: 'user',
-    content:
-      "Add 'buy milk' and 'call mom' to my todo list, " +
-      "then mark 'call mom' as done, " +
+    content: [
+      "Add 'buy milk' and 'call mom' to my todo list,",
+      "then mark 'call mom' as done,",
       "and tell me what's still pending.",
+    ].join(' '),
   },
 ];
 

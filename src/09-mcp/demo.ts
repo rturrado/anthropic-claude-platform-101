@@ -5,20 +5,31 @@ const client = makeClient();
 
 // GitHub's remote MCP server. The service provider maintains it - we point at
 // the URL, pass a bearer token, and let Claude discover the available tools.
-// Set GITHUB_MCP_TOKEN in .env.local from `gh auth token`.
 const GITHUB_MCP_URL = 'https://api.githubcopilot.com/mcp/';
 const token = process.env.GITHUB_MCP_TOKEN;
 if (!token) {
   throw new Error(
     [
-      'GITHUB_MCP_TOKEN is not set. See .env.local.example and run',
-      '`echo "GITHUB_MCP_TOKEN=$(gh auth token)" >> .env.local`.',
+      'GITHUB_MCP_TOKEN is not set.',
+      'Generate a Personal Access Token at https://github.com/settings/tokens',
+      'and add it to .env.local.',
     ].join(' '),
   );
 }
 
 // The MCP client is a beta feature; this header is required on every request.
 const MCP_BETA = 'mcp-client-2026-09-15';
+
+// Required CLI arg: GitHub account whose forks Call 2 will list.
+const account = process.argv[2];
+if (!account) {
+  throw new Error(
+    [
+      'Missing GitHub account. Pass it as the first argument, e.g.',
+      '`npm run run:lesson -- src/09-mcp/demo.ts rturrado`.',
+    ].join(' '),
+  );
+}
 
 async function runCall(
   label: string,
@@ -104,7 +115,7 @@ await runCall('mcp-list-forks', {
     {
       role: 'user',
       content: [
-        'List all forks in the GitHub account rturrado.',
+        `List all forks in the GitHub account ${account}.`,
         'Present the result as a markdown table with columns',
         '`Fork` and `Description`,',
         'sorted alphabetically by fork name (case-insensitive).',

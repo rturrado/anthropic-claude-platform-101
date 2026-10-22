@@ -6,11 +6,6 @@ node_modules/
 .idea/
 .vscode/
 
-# Scratch files (personal convention, not for the repo)
-COMMIT_MSG.md
-PR.md
-TMP.md
-
 # OS junk
 .DS_Store
 Thumbs.db

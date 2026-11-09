@@ -27,6 +27,16 @@ async function ensureAgent(): Promise<string> {
       'and reply with a single short line in the shape:',
       '"<TICKER> $<price> (<+/-change%>)".',
     ].join(' '),
+    // `agent_toolset` bundles 6 built-in tools that run inside the environment's container:
+    //   - `bash`       — execute shell commands
+    //   - `read`       — read a file (text, images, PDFs, notebooks)
+    //   - `write`      — write a file
+    //   - `edit`       — string replacement in a file
+    //   - `glob`       — fast file-pattern matching
+    //   - `grep`       — regex text search
+    //   And 2 built-in tools that run on Anthropic's servers:
+    //   - `web_fetch`  — fetch a URL
+    //   - `web_search` — search the web
     tools: [
       {
         type: 'agent_toolset_20260401',
